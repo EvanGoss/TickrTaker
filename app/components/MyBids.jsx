@@ -50,10 +50,15 @@ export default class MyBids extends Component {
         <div className="col-sm-12 bid-container">
           {this.state.itemsBidOn.map((auctionItem, index) => {
             {console.log(auctionItem)}
-            return (<Listing key={index} parity={index % 2}
-              status={this.setWinningLosing(auctionItem)}
-              auctionEnded={new Date() >= auctionItem.auctionEndDateByHighestBid}
-              item={auctionItem} />);
+            return (
+              <Listing
+                key={index} parity={index % 2}
+                status={this.setWinningLosing(auctionItem)}
+                auctionEnded={new Date() >= auctionItem.auctionEndDateByHighestBid}
+                item={auctionItem}
+                auth={this.props.auth} // NOT WORKING!!!
+              />
+            );
           })}
         </div>
       </div>

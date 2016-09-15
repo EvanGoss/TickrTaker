@@ -39,9 +39,14 @@ export default class MyAuctions extends Component {
       <div>
         <div className="col-sm-12 bid-container">
         {this.state.itemsForSale.map((saleItem, index) => {
-          return (<Listing old={true} key={index} parity={index % 2} status={'forsale'}
-            auctionEnded={new Date() >= auctionItem.auctionEndDateByHighestBid}
-            item={saleItem} />);
+          return (
+            <Listing
+              old={true} key={index} parity={index % 2} status={'forsale'}
+              auctionEnded={new Date() >= saleItem.auctionEndDateByHighestBid}
+              item={saleItem}
+              auth={this.props.auth} // NOT WORKING!!!
+            />
+          );
         }) }
         </div>
       </div>
